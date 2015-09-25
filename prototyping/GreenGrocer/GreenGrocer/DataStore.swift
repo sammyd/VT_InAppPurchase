@@ -112,7 +112,6 @@ extension NSURL {
 extension DataStore {
   func addShoppingList(shoppingList: ShoppingList) {
     shoppingLists.append(shoppingList)
-    indexShoppingLists([shoppingList])
     save()
   }
   
@@ -120,6 +119,5 @@ extension DataStore {
     if let index = shoppingLists.indexOf(shoppingList) {
       shoppingLists.removeAtIndex(index)
     }
-    removeShoppingListsFromIndex([shoppingList])
   }
 }

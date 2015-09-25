@@ -21,7 +21,6 @@
  */
 
 import UIKit
-import CoreSpotlight
 
 
 @UIApplicationMain
@@ -40,9 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Style the app
     applyAppAppearance()
     
-    // Perform the Core Spotlight indexing
-    dataStore?.indexAllShoppingLists()
-    
 
     return true
   }
@@ -59,20 +55,6 @@ extension AppDelegate {
       // Save seed data to the documents directory
       ds.save()
       return ds
-    }
-  }
-}
-
-
-extension AppDelegate {
-  func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
-    if let rootVC = window?.rootViewController,
-      let restorable = rootVC as? RestorableActivity
-      where restorable.restorableActivities.contains(userActivity.activityType) {
-        restorationHandler([rootVC])
-        return true
-    } else {
-      return false
     }
   }
 }
