@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2201AD251B63C3F90055A910 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201AD241B63C3F90055A910 /* AppAppearance.swift */; };
+		222238DB1BB5A3400001ED28 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222238DA1BB5A3400001ED28 /* StoreKit.framework */; };
+		222238DE1BB833E10001ED28 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222238DD1BB833E10001ED28 /* Products.storyboard */; settings = {ASSET_TAGS = (); }; };
+		222238E11BB834180001ED28 /* ShoppingLists.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222238DF1BB834180001ED28 /* ShoppingLists.storyboard */; settings = {ASSET_TAGS = (); }; };
+		222238E41BB8346B0001ED28 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222238E21BB8346B0001ED28 /* Store.storyboard */; settings = {ASSET_TAGS = (); }; };
 		2288EB4D1B61071600D4717D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288EB4C1B61071600D4717D /* AppDelegate.swift */; };
 		2288EB541B61071600D4717D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2288EB521B61071600D4717D /* Main.storyboard */; };
 		2288EB561B61071600D4717D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2288EB551B61071600D4717D /* Assets.xcassets */; };
@@ -35,6 +39,10 @@
 
 /* Begin PBXFileReference section */
 		2201AD241B63C3F90055A910 /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
+		222238DA1BB5A3400001ED28 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		222238DD1BB833E10001ED28 /* Products.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Products.storyboard; sourceTree = "<group>"; };
+		222238E01BB834180001ED28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ShoppingLists.storyboard; sourceTree = "<group>"; };
+		222238E31BB8346B0001ED28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Store.storyboard; sourceTree = "<group>"; };
 		2288EB491B61071600D4717D /* GreenGrocer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenGrocer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2288EB4C1B61071600D4717D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2288EB531B61071600D4717D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222238DB1BB5A3400001ED28 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,9 +90,21 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		222238DC1BB8339D0001ED28 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				222238DD1BB833E10001ED28 /* Products.storyboard */,
+				2288EB521B61071600D4717D /* Main.storyboard */,
+				222238E21BB8346B0001ED28 /* Store.storyboard */,
+				222238DF1BB834180001ED28 /* ShoppingLists.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		2288EB401B61071600D4717D = {
 			isa = PBXGroup;
 			children = (
+				222238DA1BB5A3400001ED28 /* StoreKit.framework */,
 				2288EB4B1B61071600D4717D /* GreenGrocer */,
 				2288EB4A1B61071600D4717D /* Products */,
 			);
@@ -104,8 +125,8 @@
 				2288EB741B61702C00D4717D /* Views */,
 				2288EB651B611EA500D4717D /* Data Layer */,
 				2288EB601B611BF300D4717D /* Controllers */,
+				222238DC1BB8339D0001ED28 /* Storyboards */,
 				2288EB4C1B61071600D4717D /* AppDelegate.swift */,
-				2288EB521B61071600D4717D /* Main.storyboard */,
 				2288EB551B61071600D4717D /* Assets.xcassets */,
 				2288EB571B61071600D4717D /* LaunchScreen.storyboard */,
 				2288EB5A1B61071600D4717D /* Info.plist */,
@@ -184,6 +205,12 @@
 				TargetAttributes = {
 					2288EB481B61071600D4717D = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = D23W9URMHY;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -210,8 +237,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222238DE1BB833E10001ED28 /* Products.storyboard in Resources */,
+				222238E11BB834180001ED28 /* ShoppingLists.storyboard in Resources */,
 				2288EB591B61071600D4717D /* LaunchScreen.storyboard in Resources */,
 				2288EB781B61768000D4717D /* ImageAttribution.txt in Resources */,
+				222238E41BB8346B0001ED28 /* Store.storyboard in Resources */,
 				2288EB561B61071600D4717D /* Assets.xcassets in Resources */,
 				2288EB541B61071600D4717D /* Main.storyboard in Resources */,
 				2288EB6F1B614F0E00D4717D /* GreenGrocerSeed.plist in Resources */,
@@ -250,6 +280,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		222238DF1BB834180001ED28 /* ShoppingLists.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				222238E01BB834180001ED28 /* Base */,
+			);
+			name = ShoppingLists.storyboard;
+			sourceTree = "<group>";
+		};
+		222238E21BB8346B0001ED28 /* Store.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				222238E31BB8346B0001ED28 /* Base */,
+			);
+			name = Store.storyboard;
+			sourceTree = "<group>";
+		};
 		2288EB521B61071600D4717D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -356,10 +402,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GreenGrocer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.GreenGrocer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -367,10 +416,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GreenGrocer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.GreenGrocer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
