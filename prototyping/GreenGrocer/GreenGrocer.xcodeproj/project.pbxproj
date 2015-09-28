@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2201AD251B63C3F90055A910 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201AD241B63C3F90055A910 /* AppAppearance.swift */; };
-		222238DB1BB5A3400001ED28 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222238DA1BB5A3400001ED28 /* StoreKit.framework */; };
 		222238DE1BB833E10001ED28 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222238DD1BB833E10001ED28 /* Products.storyboard */; settings = {ASSET_TAGS = (); }; };
 		222238E11BB834180001ED28 /* ShoppingLists.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222238DF1BB834180001ED28 /* ShoppingLists.storyboard */; settings = {ASSET_TAGS = (); }; };
 		222238E41BB8346B0001ED28 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222238E21BB8346B0001ED28 /* Store.storyboard */; settings = {ASSET_TAGS = (); }; };
 		222238E61BB83BE00001ED28 /* AdContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222238E51BB83BE00001ED28 /* AdContainerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		222238E81BB89FD70001ED28 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222238E71BB89FD70001ED28 /* IAPHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		226A97CF1BB9670B000A3019 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226A97CE1BB9670B000A3019 /* StoreKit.framework */; };
 		2288EB4D1B61071600D4717D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288EB4C1B61071600D4717D /* AppDelegate.swift */; };
 		2288EB541B61071600D4717D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2288EB521B61071600D4717D /* Main.storyboard */; };
 		2288EB561B61071600D4717D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2288EB551B61071600D4717D /* Assets.xcassets */; };
@@ -40,11 +41,12 @@
 
 /* Begin PBXFileReference section */
 		2201AD241B63C3F90055A910 /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
-		222238DA1BB5A3400001ED28 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		222238DD1BB833E10001ED28 /* Products.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Products.storyboard; sourceTree = "<group>"; };
 		222238E01BB834180001ED28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ShoppingLists.storyboard; sourceTree = "<group>"; };
 		222238E31BB8346B0001ED28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Store.storyboard; sourceTree = "<group>"; };
 		222238E51BB83BE00001ED28 /* AdContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdContainerViewController.swift; sourceTree = "<group>"; };
+		222238E71BB89FD70001ED28 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		226A97CE1BB9670B000A3019 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2288EB491B61071600D4717D /* GreenGrocer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenGrocer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2288EB4C1B61071600D4717D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2288EB531B61071600D4717D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				222238DB1BB5A3400001ED28 /* StoreKit.framework in Frameworks */,
+				226A97CF1BB9670B000A3019 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				2201AD241B63C3F90055A910 /* AppAppearance.swift */,
+				222238E71BB89FD70001ED28 /* IAPHelper.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -106,7 +109,7 @@
 		2288EB401B61071600D4717D = {
 			isa = PBXGroup;
 			children = (
-				222238DA1BB5A3400001ED28 /* StoreKit.framework */,
+				226A97CE1BB9670B000A3019 /* StoreKit.framework */,
 				2288EB4B1B61071600D4717D /* GreenGrocer */,
 				2288EB4A1B61071600D4717D /* Products */,
 			);
@@ -277,6 +280,7 @@
 				2288EB4D1B61071600D4717D /* AppDelegate.swift in Sources */,
 				2288EB7E1B61887F00D4717D /* MultilineLabelThatWorks.swift in Sources */,
 				2288EB641B611C3200D4717D /* ShoppingListTableViewController.swift in Sources */,
+				222238E81BB89FD70001ED28 /* IAPHelper.swift in Sources */,
 				2201AD251B63C3F90055A910 /* AppAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,7 +414,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GreenGrocer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.GreenGrocer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.greengrocer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -424,7 +428,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GreenGrocer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.GreenGrocer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.greengrocer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

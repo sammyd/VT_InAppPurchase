@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   var dataStore: DataStore?
+  let iapHelper = IAPHelper(prodIds: Set(["com.raywenderlich.greengrocer.AdRemoval"]))
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
@@ -39,6 +40,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Style the app
     applyAppAppearance()
     
+    iapHelper.requestProducts {
+      products in
+      if let products = products {
+        print("Received products: \(products)")
+      } else {
+        print("There was a problem")
+      }
+    }
 
     return true
   }
