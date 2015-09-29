@@ -30,6 +30,7 @@ class IAPHelper: NSObject {
   typealias ProductsRequestCompletionHandler = (products: [SKProduct]?) -> ()
   
   private let productIndentifiers: Set<String>
+  private(set) var purchasedProductIdentifiers = Set<String>()
   private var productsRequest: SKProductsRequest?
   private var productsRequestCompletionHandler:  ProductsRequestCompletionHandler?
   
@@ -37,6 +38,7 @@ class IAPHelper: NSObject {
     self.productIndentifiers = prodIds
     super.init()
     SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+    importIAPsFromReceipt()
   }
 }
 
@@ -95,12 +97,12 @@ extension IAPHelper: SKPaymentTransactionObserver {
   }
   
   private func completeTransaction(transaction: SKPaymentTransaction) {
-    NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.IAPHelperPurchaseNotification, object: transaction.payment.productIdentifier)
+    deliverPurchaseNotificatioForIdentifier(transaction.payment.productIdentifier)
     SKPaymentQueue.defaultQueue().finishTransaction(transaction)
   }
   
   private func restoreTranscation(transaction: SKPaymentTransaction) {
-    NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.IAPHelperPurchaseNotification, object: transaction.originalTransaction?.payment.productIdentifier)
+    deliverPurchaseNotificatioForIdentifier(transaction.originalTransaction?.payment.productIdentifier)
     SKPaymentQueue.defaultQueue().finishTransaction(transaction)
   }
   
@@ -109,6 +111,26 @@ extension IAPHelper: SKPaymentTransactionObserver {
       print("Transaction Error: \(transaction.error?.localizedDescription)")
     }
     SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+  }
+  
+  private func deliverPurchaseNotificatioForIdentifier(identifier: String?) {
+    guard let identifier = identifier else { return }
+    purchasedProductIdentifiers.insert(identifier)
+    NSNotificationCenter.defaultCenter()
+      .postNotificationName(self.dynamicType.IAPHelperPurchaseNotification, object: identifier)
+  }
+}
+
+//:- Importing existing IAPs from receipt
+extension IAPHelper {
+  private func importIAPsFromReceipt() {
+    let verifier = RMStoreAppReceiptVerifier()
+    if verifier.verifyAppReceipt() {
+      let iaps = verifier.appReceipt.inAppPurchases
+      for iap in iaps {
+        deliverPurchaseNotificatioForIdentifier(iap.productIdentifier)
+      }
+    }
   }
 }
 

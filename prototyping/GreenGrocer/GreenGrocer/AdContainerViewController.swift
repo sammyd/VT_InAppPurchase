@@ -35,8 +35,7 @@ class AdContainerViewController: UIViewController, DataStoreOwner, IAPContainer 
   }
   var iapHelper: IAPHelper? {
     didSet {
-      findAdRemovalProduct()
-      passIAPHelperToChildren()
+      updateIAPHelper()
     }
   }
   private var adRemovalProduct: SKProduct?
@@ -64,19 +63,29 @@ extension AdContainerViewController {
     }
   }
   
-  private func setAdsAsRemoved(removed: Bool) {
+  private func setAdsAsRemoved(removed: Bool, animated: Bool = true) {
     dispatch_async(dispatch_get_main_queue()) {
-      UIView.animateWithDuration(0.7) {
+      if animated {
+        UIView.animateWithDuration(0.7) {
+          self.adView.hidden = removed
+        }
+      } else {
         self.adView.hidden = removed
       }
     }
   }
   
-  private func findAdRemovalProduct() {
-    iapHelper?.requestProducts {
+  private func updateIAPHelper() {
+    passIAPHelperToChildren()
+    
+    guard let iapHelper = iapHelper else { return }
+    
+    iapHelper.requestProducts {
       products in
       self.adRemovalProduct = products?.filter { $0.productIdentifier == GreenGrocerPurchase.AdRemoval.productId }.first
     }
+    
+    setAdsAsRemoved(iapHelper.purchasedProductIdentifiers.contains(GreenGrocerPurchase.AdRemoval.productId), animated: false)
   }
   
 }
