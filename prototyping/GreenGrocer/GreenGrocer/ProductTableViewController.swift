@@ -22,13 +22,15 @@
 
 import UIKit
 
-class ProductTableViewController: UITableViewController, DataStoreOwner {
+class ProductTableViewController: UITableViewController, DataStoreOwner, IAPContainer {
   
   var dataStore : DataStore? {
     didSet {
       tableView.reloadData()
     }
   }
+  
+  var iapHelper : IAPHelper?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -67,3 +69,12 @@ class ProductTableViewController: UITableViewController, DataStoreOwner {
   }
   
 }
+
+
+extension ProductTableViewController {
+  @IBAction func handleRestorePurchasesPressed(sender: AnyObject) {
+    iapHelper?.restorePurchases()
+  }
+}
+
+

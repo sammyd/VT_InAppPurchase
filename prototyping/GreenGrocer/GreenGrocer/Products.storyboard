@@ -55,7 +55,13 @@
                             <outlet property="delegate" destination="4OM-co-sp8" id="dBz-zN-xEv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Products" id="liF-r7-TBz"/>
+                    <navigationItem key="navigationItem" title="Products" id="liF-r7-TBz">
+                        <barButtonItem key="rightBarButtonItem" title="Restore Purchases" id="xfv-tw-aE9">
+                            <connections>
+                                <action selector="handleRestorePurchasesPressed:" destination="4OM-co-sp8" id="AZV-Q6-4fr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1VZ-XO-2aE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

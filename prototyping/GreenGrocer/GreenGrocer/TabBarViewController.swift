@@ -22,10 +22,16 @@
 
 import UIKit
 
-class TabBarViewController: UITabBarController, DataStoreOwner {
+class TabBarViewController: UITabBarController, DataStoreOwner, IAPContainer {
   var dataStore : DataStore? {
     didSet {
       passDataStoreToChildren()
+    }
+  }
+  
+  var iapHelper : IAPHelper? {
+    didSet {
+      passIAPHelperToChildren()
     }
   }
 }

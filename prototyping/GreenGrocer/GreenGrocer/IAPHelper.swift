@@ -55,6 +55,10 @@ extension IAPHelper {
     let payment = SKPayment(product: product)
     SKPaymentQueue.defaultQueue().addPayment(payment)
   }
+  
+  func restorePurchases() {
+    SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+  }
 }
 
 //:- SKProductsRequestDelegate
