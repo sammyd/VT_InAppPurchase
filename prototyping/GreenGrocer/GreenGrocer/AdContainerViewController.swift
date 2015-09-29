@@ -80,10 +80,9 @@ extension AdContainerViewController {
     
     guard let iapHelper = iapHelper else { return }
     
-    iapHelper.requestProducts {
-      products in
-      self.adRemovalProduct = products?.filter { $0.productIdentifier == GreenGrocerPurchase.AdRemoval.productId }.first
-    }
+    adRemovalProduct = iapHelper.availableProducts.filter {
+      $0.productIdentifier == GreenGrocerPurchase.AdRemoval.productId
+      }.first
     
     setAdsAsRemoved(iapHelper.purchasedProductIdentifiers.contains(GreenGrocerPurchase.AdRemoval.productId), animated: false)
   }

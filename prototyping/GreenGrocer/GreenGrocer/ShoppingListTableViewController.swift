@@ -23,9 +23,10 @@
 import UIKit
 import CoreSpotlight
 
-class ShoppingListTableViewController: UITableViewController, DataStoreOwner {
+class ShoppingListTableViewController: UITableViewController, DataStoreOwner, IAPContainer {
   
   var dataStore : DataStore?
+  var iapHelper : IAPHelper?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -79,6 +80,7 @@ class ShoppingListTableViewController: UITableViewController, DataStoreOwner {
       destVC.dataStore = dataStore
     } else if let destVC = segue.destinationViewController as? CreateShoppingListViewController {
       destVC.dataStore = dataStore
+      destVC.iapHelper = iapHelper
     }
   }
   

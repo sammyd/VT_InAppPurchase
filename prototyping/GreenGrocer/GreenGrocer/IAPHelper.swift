@@ -31,6 +31,7 @@ class IAPHelper: NSObject {
   
   private let productIndentifiers: Set<String>
   private(set) var purchasedProductIdentifiers = Set<String>()
+  private(set) var availableProducts = Set<SKProduct>()
   private var productsRequest: SKProductsRequest?
   private var productsRequestCompletionHandler:  ProductsRequestCompletionHandler?
   
@@ -39,6 +40,8 @@ class IAPHelper: NSObject {
     super.init()
     SKPaymentQueue.defaultQueue().addTransactionObserver(self)
     importIAPsFromReceipt()
+    retrieveAvailableProducts()
+    
   }
 }
 
@@ -118,6 +121,17 @@ extension IAPHelper: SKPaymentTransactionObserver {
     purchasedProductIdentifiers.insert(identifier)
     NSNotificationCenter.defaultCenter()
       .postNotificationName(self.dynamicType.IAPHelperPurchaseNotification, object: identifier)
+  }
+}
+
+//:- Obtain available products
+extension IAPHelper {
+  private func retrieveAvailableProducts() {
+    requestProducts() {
+      products in
+      guard let products = products else { return }
+      self.availableProducts = Set(products)
+    }
   }
 }
 

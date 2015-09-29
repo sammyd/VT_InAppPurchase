@@ -1,28 +1,28 @@
 /*
- * Copyright (c) 2015 Razeware LLC
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+* Copyright (c) 2015 Razeware LLC
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+* THE SOFTWARE.
+*/
 
 import UIKit
 
-class CreateShoppingListViewController: UIViewController {
+class CreateShoppingListViewController: UIViewController, IAPContainer {
   
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var datePicker: UIDatePicker!
@@ -36,11 +36,14 @@ class CreateShoppingListViewController: UIViewController {
     }
   }
   
+  var iapHelper : IAPHelper?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
     configureTableView(tableView)
+    checkShoppingListAvailability()
   }
 }
 
@@ -57,8 +60,9 @@ extension CreateShoppingListViewController {
 extension CreateShoppingListViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "completeShoppingListCreation",
-      let shoppingList = createNewShoppingList() {
-      dataStore?.addShoppingList(shoppingList)
+      let shoppingList = createNewShoppingList()
+      where dataStore?.numberAvailableShoppingLists > 0 {
+        dataStore?.addShoppingList(shoppingList)
     }
   }
   
@@ -105,3 +109,51 @@ extension CreateShoppingListViewController : UITableViewDelegate {
     }
   }
 }
+
+
+extension CreateShoppingListViewController {
+  func checkShoppingListAvailability() {
+    if dataStore?.numberAvailableShoppingLists > 0 { return }
+    guard let iapHelper = iapHelper else { return }
+    // Don't have any available. Show a message
+    
+    // Get hold of the ones available to buy
+    let shoppingListProductIds = [
+      GreenGrocerPurchase.NewShoppingLists_One,
+      GreenGrocerPurchase.NewShoppingLists_Five,
+      GreenGrocerPurchase.NewShoppingLists_Ten
+      ].map { $0.productId }
+    
+    let products = iapHelper.availableProducts.filter {
+      shoppingListProductIds.contains($0.productIdentifier)
+    }
+    
+    let alert = UIAlertController(title: "No Shopping Lists Available",
+      message: "You have run out of shopping lists. To purchase more choose your offer.",
+      preferredStyle: .ActionSheet)
+    
+    let priceFormatter = NSNumberFormatter()
+    priceFormatter.numberStyle = .CurrencyStyle
+    
+    for product in products {
+      priceFormatter.locale = product.priceLocale
+      let title = product.localizedTitle + " " + priceFormatter.stringFromNumber(product.price)!
+      alert.addAction(UIAlertAction(title: title, style: .Default) {
+        _ in
+        iapHelper.buyProduct(product)
+        self.dismissViewControllerAnimated(true, completion: nil)
+      })
+    }
+    
+    alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel) {
+      _ in
+      self.dismissViewControllerAnimated(true, completion: nil)
+    })
+    
+    presentViewController(alert, animated: true, completion: nil)
+    
+    alert.popoverPresentationController?.sourceView = tabBarController?.tabBar
+  }
+  
+}
+
