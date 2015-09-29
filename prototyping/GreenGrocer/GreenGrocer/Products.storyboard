@@ -22,9 +22,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9Pd-KT-sl0">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="163.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="164"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pears_thumb" translatesAutoresizingMaskIntoConstraints="NO" id="w5P-OF-MDw">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pears_thumb" translatesAutoresizingMaskIntoConstraints="NO" id="w5P-OF-MDw">
                                                     <rect key="frame" x="0.0" y="32" width="100" height="100"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="ProductName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vj9-By-NOt">

@@ -20,11 +20,17 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0lo-hL-CN8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="6cp-gw-sFu">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
+                                        <connections>
+                                            <segue destination="49e-Tb-3d3" kind="embed" id="69x-pb-wgv"/>
+                                        </connections>
+                                    </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sva-eQ-e7j" userLabel="Ad View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="550" width="600" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📢 an intrusive advert" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fW6-d8-iIi">
-                                                <rect key="frame" x="8" y="16.5" width="584" height="38"/>
+                                                <rect key="frame" x="8" y="6.5" width="584" height="37.5"/>
                                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -33,24 +39,21 @@
                                                 <rect key="frame" x="526" y="23" width="70" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <state key="normal" title="Remove Ads"/>
+                                                <connections>
+                                                    <action selector="handleRemoveAdsPressed:" destination="T9l-g4-1TW" eventType="touchUpInside" id="S7F-yI-UnE"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.79607843140000001" green="0.74509803919999995" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="fW6-d8-iIi" firstAttribute="leading" secondItem="sva-eQ-e7j" secondAttribute="leadingMargin" id="Os9-Fd-dAV"/>
                                             <constraint firstItem="JUM-1m-65M" firstAttribute="trailing" secondItem="sva-eQ-e7j" secondAttribute="trailing" constant="-4" id="VCD-qL-jNJ"/>
-                                            <constraint firstItem="fW6-d8-iIi" firstAttribute="centerY" secondItem="sva-eQ-e7j" secondAttribute="centerY" constant="10" id="aPI-Vc-9iW"/>
+                                            <constraint firstItem="fW6-d8-iIi" firstAttribute="centerY" secondItem="sva-eQ-e7j" secondAttribute="centerY" id="aPI-Vc-9iW"/>
                                             <constraint firstItem="fW6-d8-iIi" firstAttribute="trailing" secondItem="sva-eQ-e7j" secondAttribute="trailingMargin" id="aog-PP-mqR"/>
                                             <constraint firstAttribute="height" constant="50" id="cyp-wi-gFD"/>
                                             <constraint firstItem="JUM-1m-65M" firstAttribute="bottom" secondItem="sva-eQ-e7j" secondAttribute="bottom" id="dre-MZ-FD8"/>
                                         </constraints>
                                     </view>
-                                    <containerView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="6cp-gw-sFu">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="550"/>
-                                        <connections>
-                                            <segue destination="49e-Tb-3d3" kind="embed" id="69x-pb-wgv"/>
-                                        </connections>
-                                    </containerView>
                                 </subviews>
                             </stackView>
                         </subviews>
