@@ -59,7 +59,7 @@ extension AdContainerViewController {
   
   func handlePurchaseNotification(notification: NSNotification) {
     if let productID = notification.object as? String
-      where productID == "com.raywenderlich.greengrocer.AdRemoval" {
+      where productID == GreenGrocerPurchase.AdRemoval.productId {
         setAdsAsRemoved(true)
     }
   }
@@ -75,7 +75,7 @@ extension AdContainerViewController {
   private func findAdRemovalProduct() {
     iapHelper?.requestProducts {
       products in
-      self.adRemovalProduct = products?.filter { $0.productIdentifier == "com.raywenderlich.greengrocer.AdRemoval" }.first
+      self.adRemovalProduct = products?.filter { $0.productIdentifier == GreenGrocerPurchase.AdRemoval.productId }.first
     }
   }
   

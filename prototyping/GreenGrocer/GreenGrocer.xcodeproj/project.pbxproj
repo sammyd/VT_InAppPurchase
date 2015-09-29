@@ -13,6 +13,7 @@
 		222238E41BB8346B0001ED28 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 222238E21BB8346B0001ED28 /* Store.storyboard */; settings = {ASSET_TAGS = (); }; };
 		222238E61BB83BE00001ED28 /* AdContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222238E51BB83BE00001ED28 /* AdContainerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		222238E81BB89FD70001ED28 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222238E71BB89FD70001ED28 /* IAPHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		22342C691BBAB22900C66BAB /* GreenGrocerIAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22342C681BBAB22900C66BAB /* GreenGrocerIAPHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		226A97CF1BB9670B000A3019 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226A97CE1BB9670B000A3019 /* StoreKit.framework */; };
 		2288EB4D1B61071600D4717D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288EB4C1B61071600D4717D /* AppDelegate.swift */; };
 		2288EB541B61071600D4717D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2288EB521B61071600D4717D /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		222238E31BB8346B0001ED28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Store.storyboard; sourceTree = "<group>"; };
 		222238E51BB83BE00001ED28 /* AdContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdContainerViewController.swift; sourceTree = "<group>"; };
 		222238E71BB89FD70001ED28 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		22342C681BBAB22900C66BAB /* GreenGrocerIAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenGrocerIAPHelper.swift; sourceTree = "<group>"; };
 		226A97CE1BB9670B000A3019 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		2288EB491B61071600D4717D /* GreenGrocer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenGrocer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2288EB4C1B61071600D4717D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				2201AD241B63C3F90055A910 /* AppAppearance.swift */,
 				222238E71BB89FD70001ED28 /* IAPHelper.swift */,
+				22342C681BBAB22900C66BAB /* GreenGrocerIAPHelper.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				222238E61BB83BE00001ED28 /* AdContainerViewController.swift in Sources */,
 				2288EB691B6120AD00D4717D /* ShoppingList.swift in Sources */,
 				2288EB761B61704A00D4717D /* ProductTableViewCell.swift in Sources */,
+				22342C691BBAB22900C66BAB /* GreenGrocerIAPHelper.swift in Sources */,
 				2288EB4D1B61071600D4717D /* AppDelegate.swift in Sources */,
 				2288EB7E1B61887F00D4717D /* MultilineLabelThatWorks.swift in Sources */,
 				2288EB641B611C3200D4717D /* ShoppingListTableViewController.swift in Sources */,
