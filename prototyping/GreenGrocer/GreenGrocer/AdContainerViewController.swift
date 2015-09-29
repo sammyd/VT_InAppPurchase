@@ -21,20 +21,62 @@
 */
 
 import UIKit
+import StoreKit
 
-class AdContainerViewController: UIViewController, DataStoreOwner {
+class AdContainerViewController: UIViewController, DataStoreOwner, IAPContainer {
   
   @IBOutlet weak var adView: UIView!
   @IBOutlet weak var containerView: UIView!
   
-  var dataStore : DataStore? {
+  var dataStore: DataStore? {
     didSet {
       passDataStoreToChildren()
     }
   }
+  var iapHelper: IAPHelper? {
+    didSet {
+      findAdRemovalProduct()
+      passIAPHelperToChildren()
+    }
+  }
+  private var adRemovalProduct: SKProduct?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     passDataStoreToChildren()
+    passIAPHelperToChildren()
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handlePurchaseNotification:", name: IAPHelper.IAPHelperPurchaseNotification, object: nil)
   }
+}
+
+extension AdContainerViewController {
+  
+  @IBAction func handleRemoveAdsPressed(sender: AnyObject) {
+    if let adRemovalProduct = adRemovalProduct {
+      iapHelper?.buyProduct(adRemovalProduct)
+    }
+  }
+  
+  func handlePurchaseNotification(notification: NSNotification) {
+    if let productID = notification.object as? String
+      where productID == "com.raywenderlich.greengrocer.AdRemoval" {
+        setAdsAsRemoved(true)
+    }
+  }
+  
+  private func setAdsAsRemoved(removed: Bool) {
+    dispatch_async(dispatch_get_main_queue()) {
+      UIView.animateWithDuration(0.7) {
+        self.adView.hidden = removed
+      }
+    }
+  }
+  
+  private func findAdRemovalProduct() {
+    iapHelper?.requestProducts {
+      products in
+      self.adRemovalProduct = products?.filter { $0.productIdentifier == "com.raywenderlich.greengrocer.AdRemoval" }.first
+    }
+  }
+  
 }

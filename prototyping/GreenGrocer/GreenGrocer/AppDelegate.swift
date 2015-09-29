@@ -37,17 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dso = window?.rootViewController as? DataStoreOwner
     dso?.dataStore = dataStore
     
+    var iapContainer = window?.rootViewController as? IAPContainer
+    iapContainer?.iapHelper = iapHelper
+    
     // Style the app
     applyAppAppearance()
     
-    iapHelper.requestProducts {
-      products in
-      if let products = products {
-        print("Received products: \(products)")
-      } else {
-        print("There was a problem")
-      }
-    }
 
     return true
   }

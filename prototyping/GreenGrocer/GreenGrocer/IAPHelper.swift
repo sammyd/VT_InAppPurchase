@@ -24,7 +24,8 @@ import StoreKit
 import Foundation
 
 
-class IAPHelper: NSObject, SKProductsRequestDelegate {
+class IAPHelper: NSObject {
+  static let IAPHelperPurchaseNotification = "IAPHelperPurchaseNotification"
   
   typealias ProductsRequestCompletionHandler = (products: [SKProduct]?) -> ()
   
@@ -35,8 +36,12 @@ class IAPHelper: NSObject, SKProductsRequestDelegate {
   init(prodIds: Set<String>) {
     self.productIndentifiers = prodIds
     super.init()
+    SKPaymentQueue.defaultQueue().addTransactionObserver(self)
   }
-  
+}
+
+//:- API
+extension IAPHelper {
   func requestProducts(completionHandler: ProductsRequestCompletionHandler) {
     productsRequest?.cancel()
     productsRequestCompletionHandler = completionHandler
@@ -46,7 +51,14 @@ class IAPHelper: NSObject, SKProductsRequestDelegate {
     productsRequest?.start()
   }
   
-  
+  func buyProduct(product: SKProduct) {
+    let payment = SKPayment(product: product)
+    SKPaymentQueue.defaultQueue().addPayment(payment)
+  }
+}
+
+//:- SKProductsRequestDelegate
+extension IAPHelper: SKProductsRequestDelegate {
   func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
     productsRequestCompletionHandler?(products: response.products)
     productsRequestCompletionHandler = .None
@@ -59,6 +71,56 @@ class IAPHelper: NSObject, SKProductsRequestDelegate {
     productsRequestCompletionHandler = .None
     productsRequest = .None
   }
-  
 }
 
+//:- SKPaymentTransactionObserver
+extension IAPHelper: SKPaymentTransactionObserver {
+  func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    for transaction in transactions {
+      switch transaction.transactionState {
+      case .Purchased:
+        completeTransaction(transaction)
+      case .Failed:
+        failedTransaction(transaction)
+      case .Restored:
+        restoreTranscation(transaction)
+      default:
+        print("Unhandled transaction type")
+      }
+    }
+  }
+  
+  private func completeTransaction(transaction: SKPaymentTransaction) {
+    NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.IAPHelperPurchaseNotification, object: transaction.payment.productIdentifier)
+    SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+  }
+  
+  private func restoreTranscation(transaction: SKPaymentTransaction) {
+    NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.IAPHelperPurchaseNotification, object: transaction.originalTransaction?.payment.productIdentifier)
+    SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+  }
+  
+  private func failedTransaction(transaction: SKPaymentTransaction) {
+    if transaction.error?.code != SKErrorPaymentCancelled {
+      print("Transaction Error: \(transaction.error?.localizedDescription)")
+    }
+    SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+  }
+}
+
+
+protocol IAPContainer {
+  var iapHelper : IAPHelper? { get set }
+  
+  func passIAPHelperToChildren()
+}
+
+
+extension IAPContainer where Self : UIViewController {
+  func passIAPHelperToChildren() {
+    for vc in childViewControllers {
+      var iapContainer = vc as? IAPContainer
+      iapContainer?.iapHelper = iapHelper
+    }
+  }
+}
