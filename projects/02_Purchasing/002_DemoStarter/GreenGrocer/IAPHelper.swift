@@ -48,11 +48,6 @@ extension IAPHelper {
     productsRequest?.delegate = self
     productsRequest?.start()
   }
-  
-  func buyProduct(product: SKProduct) {
-    let payment = SKPayment(product: product)
-    SKPaymentQueue.defaultQueue().addPayment(payment)
-  }
 }
 
 //:- SKProductsRequestDelegate
