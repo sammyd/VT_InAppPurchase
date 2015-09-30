@@ -26,43 +26,6 @@ import Foundation
 
 class IAPHelper: NSObject {
   
-  typealias ProductsRequestCompletionHandler = (products: [SKProduct]?) -> ()
-  
-  private let productIndentifiers: Set<String>
-  private var productsRequest: SKProductsRequest?
-  private var productsRequestCompletionHandler:  ProductsRequestCompletionHandler?
-  
-  init(prodIds: Set<String>) {
-    self.productIndentifiers = prodIds
-    super.init()
-  }
 }
 
-//:- API
-extension IAPHelper {
-  func requestProducts(completionHandler: ProductsRequestCompletionHandler) {
-    productsRequest?.cancel()
-    productsRequestCompletionHandler = completionHandler
-    
-    productsRequest = SKProductsRequest(productIdentifiers: productIndentifiers)
-    productsRequest?.delegate = self
-    productsRequest?.start()
-  }
-}
-
-//:- SKProductsRequestDelegate
-extension IAPHelper: SKProductsRequestDelegate {
-  func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
-    productsRequestCompletionHandler?(products: response.products)
-    productsRequestCompletionHandler = .None
-    productsRequest = .None
-  }
-  
-  func request(request: SKRequest, didFailWithError error: NSError) {
-    print("Error: \(error.localizedDescription)")
-    productsRequestCompletionHandler?(products: .None)
-    productsRequestCompletionHandler = .None
-    productsRequest = .None
-  }
-}
 

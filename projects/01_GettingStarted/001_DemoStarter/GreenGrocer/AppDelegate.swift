@@ -28,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   var dataStore: DataStore?
-  let iapHelper = IAPHelper(prodIds: Set([GreenGrocerPurchase.AdRemoval.productId]))
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
@@ -39,15 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Style the app
     applyAppAppearance()
-    
-    // Find the available products
-    iapHelper.requestProducts {
-      products in
-      guard let products = products else { return }
-      print("\n\n\n")
-      print(products.map { $0.productIdentifier })
-    }
-    
 
     return true
   }
