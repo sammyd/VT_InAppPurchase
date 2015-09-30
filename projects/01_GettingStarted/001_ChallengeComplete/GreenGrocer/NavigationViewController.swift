@@ -22,17 +22,11 @@
 
 import UIKit
 
-class NavigationViewController: UINavigationController, DataStoreOwner, IAPContainer {
+class NavigationViewController: UINavigationController, DataStoreOwner {
   
   var dataStore : DataStore? {
     didSet {
       passDataStoreToChildren()
-    }
-  }
-  
-  var iapHelper : IAPHelper? {
-    didSet {
-      passIAPHelperToChildren()
     }
   }
 }

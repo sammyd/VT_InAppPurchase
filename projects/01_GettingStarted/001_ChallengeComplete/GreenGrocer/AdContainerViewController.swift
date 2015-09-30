@@ -23,7 +23,7 @@
 import UIKit
 import StoreKit
 
-class AdContainerViewController: UIViewController, DataStoreOwner, IAPContainer {
+class AdContainerViewController: UIViewController, DataStoreOwner {
   
   @IBOutlet weak var adView: UIView!
   @IBOutlet weak var containerView: UIView!
@@ -33,43 +33,9 @@ class AdContainerViewController: UIViewController, DataStoreOwner, IAPContainer 
       passDataStoreToChildren()
     }
   }
-  var iapHelper: IAPHelper? {
-    didSet {
-      updateIAPHelper()
-    }
-  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     passDataStoreToChildren()
-    passIAPHelperToChildren()
   }
-}
-
-extension AdContainerViewController {
-  
-  @IBAction func handleRemoveAdsPressed(sender: AnyObject) {
-    // TODO: Write implementation
-  }
-  
-  private func setAdsAsRemoved(removed: Bool, animated: Bool = true) {
-    dispatch_async(dispatch_get_main_queue()) {
-      if animated {
-        UIView.animateWithDuration(0.7) {
-          self.adView.hidden = removed
-        }
-      } else {
-        self.adView.hidden = removed
-      }
-    }
-  }
-  
-  private func updateIAPHelper() {
-    passIAPHelperToChildren()
-    
-    guard let iapHelper = iapHelper else { return }
-    
-    // TODO: complete this implementation
-  }
-  
 }

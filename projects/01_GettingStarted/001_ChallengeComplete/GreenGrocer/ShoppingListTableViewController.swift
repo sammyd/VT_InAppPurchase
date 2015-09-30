@@ -22,10 +22,9 @@
 
 import UIKit
 
-class ShoppingListTableViewController: UITableViewController, DataStoreOwner, IAPContainer {
+class ShoppingListTableViewController: UITableViewController, DataStoreOwner {
   
   var dataStore : DataStore?
-  var iapHelper : IAPHelper?
   
   override func viewDidLoad() {
     super.viewDidLoad()

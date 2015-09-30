@@ -66,20 +66,3 @@ extension IAPHelper: SKProductsRequestDelegate {
   }
 }
 
-
-
-protocol IAPContainer {
-  var iapHelper : IAPHelper? { get set }
-  
-  func passIAPHelperToChildren()
-}
-
-
-extension IAPContainer where Self : UIViewController {
-  func passIAPHelperToChildren() {
-    for vc in childViewControllers {
-      var iapContainer = vc as? IAPContainer
-      iapContainer?.iapHelper = iapHelper
-    }
-  }
-}

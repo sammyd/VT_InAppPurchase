@@ -22,15 +22,13 @@
 
 import UIKit
 
-class ProductTableViewController: UITableViewController, DataStoreOwner, IAPContainer {
+class ProductTableViewController: UITableViewController, DataStoreOwner {
   
   var dataStore : DataStore? {
     didSet {
       tableView.reloadData()
     }
   }
-  
-  var iapHelper : IAPHelper?
   
   override func viewDidLoad() {
     super.viewDidLoad()
