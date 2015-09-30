@@ -55,12 +55,16 @@ extension DataStore {
     shoppingListCredits -= 1
   }
   
+  
+  
+  
   private func readNumberShoppingListCredits() -> Int {
-    return NSUserDefaults.standardUserDefaults().integerForKey(ShoppingListCreditCountKey)
+    // TODO: Read the number from NSUserDefaults
+    return 0
   }
   
   private func writeNumberShoppingListCredits(number: Int) {
-    NSUserDefaults.standardUserDefaults().setInteger(number, forKey: ShoppingListCreditCountKey)
-    NSUserDefaults.standardUserDefaults().synchronize()
+    // TODO: Save the number in NSUserDefaults
+    return
   }
 }

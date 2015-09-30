@@ -44,27 +44,17 @@ class PurchaseShoppingListCreditsViewController: UIViewController, IAPContainer,
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleIAPPurchase:", name: IAPHelper.IAPHelperPurchaseNotification, object: nil)
     prepareContent()
   }
   
   
   @IBAction func handleBuyPressed(sender: UIButton) {
-    guard let productIndex = buyButtons.indexOf(sender) else { return }
-    let product = availableProducts[productIndex]
-    iapHelper?.buyProduct(product)
+    // TODO: Buy the product
+    finishWithPurchaseVC()
   }
   
   
   @IBAction func handleCancelPressed(sender: AnyObject) {
-    finishWithPurchaseVC()
-  }
-  
-  func handleIAPPurchase(notification: NSNotification) {
-    if let productID = notification.object as? String
-      where availableProducts.map({ $0.productIdentifier }).contains(productID) {
-        dataStore?.purchaseNewShoppingLists(productID)
-    }
     finishWithPurchaseVC()
   }
 }
@@ -80,9 +70,8 @@ extension PurchaseShoppingListCreditsViewController {
       GreenGrocerPurchase.NewShoppingLists_Ten
       ].map { $0.productId }
     
-    return helper.availableProducts.filter {
-      shoppingListProductIds.contains($0.productIdentifier)
-      }.sort { $0.0.price.compare($0.1.price) == .OrderedAscending }
+    // TODO: Find the correct products
+    return [SKProduct]()
   }
   
   private func prepareContent() {
@@ -90,14 +79,7 @@ extension PurchaseShoppingListCreditsViewController {
     if availableProducts.count != offerLabels?.count
       || availableProducts.count != buyButtons?.count { return }
     
-    // Prepare a price formatter
-    let priceFormatter = NSNumberFormatter()
-    priceFormatter.numberStyle = .CurrencyStyle
-    
-    for (label, product) in zip(offerLabels, availableProducts) {
-      priceFormatter.locale = product.priceLocale
-      label.text = product.localizedTitle + "\n" + priceFormatter.stringFromNumber(product.price)!
-    }
+    // TODO: Update the labels to display the products
   }
   
   private func finishWithPurchaseVC() {
