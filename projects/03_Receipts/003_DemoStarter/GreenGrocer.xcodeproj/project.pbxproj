@@ -14,7 +14,6 @@
 		222238E61BB83BE00001ED28 /* AdContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222238E51BB83BE00001ED28 /* AdContainerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		222238E81BB89FD70001ED28 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222238E71BB89FD70001ED28 /* IAPHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		22342C691BBAB22900C66BAB /* GreenGrocerIAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22342C681BBAB22900C66BAB /* GreenGrocerIAPHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		22342C731BBAE58500C66BAB /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 22342C721BBAE58000C66BAB /* AppleIncRootCertificate.cer */; settings = {ASSET_TAGS = (); }; };
 		22342C791BBAF92F00C66BAB /* RMAppReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 22342C761BBAF92F00C66BAB /* RMAppReceipt.m */; settings = {ASSET_TAGS = (); }; };
 		22342C7A1BBAF92F00C66BAB /* RMStoreAppReceiptVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 22342C781BBAF92F00C66BAB /* RMStoreAppReceiptVerifier.m */; settings = {ASSET_TAGS = (); }; };
 		2288EB4D1B61071600D4717D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288EB4C1B61071600D4717D /* AppDelegate.swift */; };
@@ -37,9 +36,9 @@
 		2288EB7E1B61887F00D4717D /* MultilineLabelThatWorks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288EB7D1B61887F00D4717D /* MultilineLabelThatWorks.swift */; };
 		2288EB801B62186D00D4717D /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288EB7F1B62186D00D4717D /* ShoppingListTableViewCell.swift */; };
 		2288EB821B62260E00D4717D /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288EB811B62260E00D4717D /* ShoppingListViewController.swift */; };
-		22C5D2AE1BBB053D008A75BE /* libcrypto_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C5D2A81BBB053D008A75BE /* libcrypto_iOS.a */; settings = {ASSET_TAGS = (); }; };
-		22C5D2B01BBB053D008A75BE /* libssl_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C5D2AA1BBB053D008A75BE /* libssl_iOS.a */; settings = {ASSET_TAGS = (); }; };
 		22C5D2B31BBB053D008A75BE /* openssl-build.sh in Resources */ = {isa = PBXBuildFile; fileRef = 22C5D2AD1BBB053D008A75BE /* openssl-build.sh */; settings = {ASSET_TAGS = (); }; };
+		22C5D2BF1BBC4032008A75BE /* libcrypto_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C5D2A81BBB053D008A75BE /* libcrypto_iOS.a */; settings = {ASSET_TAGS = (); }; };
+		22C5D2C01BBC4032008A75BE /* libssl_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C5D2AA1BBB053D008A75BE /* libssl_iOS.a */; settings = {ASSET_TAGS = (); }; };
 		22E70AB11B68C88300526CD1 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E70AB01B68C88300526CD1 /* StoreViewController.swift */; };
 		22F2E3C31B623DE500E7753F /* CreateShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2E3C21B623DE500E7753F /* CreateShoppingListViewController.swift */; };
 		22F2E3C51B6246BA00E7753F /* SelectableProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2E3C41B6246BA00E7753F /* SelectableProductTableViewCell.swift */; };
@@ -54,7 +53,6 @@
 		222238E71BB89FD70001ED28 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		22342C681BBAB22900C66BAB /* GreenGrocerIAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreenGrocerIAPHelper.swift; sourceTree = "<group>"; };
 		22342C6C1BBACB3C00C66BAB /* GreenGrocer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GreenGrocer-Bridging-Header.h"; sourceTree = "<group>"; };
-		22342C721BBAE58000C66BAB /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleIncRootCertificate.cer; sourceTree = "<group>"; };
 		22342C751BBAF92F00C66BAB /* RMAppReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAppReceipt.h; sourceTree = "<group>"; };
 		22342C761BBAF92F00C66BAB /* RMAppReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMAppReceipt.m; sourceTree = "<group>"; };
 		22342C771BBAF92F00C66BAB /* RMStoreAppReceiptVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStoreAppReceiptVerifier.h; sourceTree = "<group>"; };
@@ -171,8 +169,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22C5D2AE1BBB053D008A75BE /* libcrypto_iOS.a in Frameworks */,
-				22C5D2B01BBB053D008A75BE /* libssl_iOS.a in Frameworks */,
+				22C5D2C01BBC4032008A75BE /* libssl_iOS.a in Frameworks */,
+				22C5D2BF1BBC4032008A75BE /* libcrypto_iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				22342C741BBAF8B800C66BAB /* RMStore */,
-				22342C721BBAE58000C66BAB /* AppleIncRootCertificate.cer */,
 				222238E71BB89FD70001ED28 /* IAPHelper.swift */,
 				22342C681BBAB22900C66BAB /* GreenGrocerIAPHelper.swift */,
 			);
@@ -513,7 +510,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				222238DE1BB833E10001ED28 /* Products.storyboard in Resources */,
-				22342C731BBAE58500C66BAB /* AppleIncRootCertificate.cer in Resources */,
 				222238E11BB834180001ED28 /* ShoppingLists.storyboard in Resources */,
 				2288EB591B61071600D4717D /* LaunchScreen.storyboard in Resources */,
 				2288EB781B61768000D4717D /* ImageAttribution.txt in Resources */,

@@ -30,8 +30,6 @@ class IAPHelper: NSObject {
   typealias ProductsRequestCompletionHandler = (products: [SKProduct]?) -> ()
   
   private let productIndentifiers: Set<String>
-  private(set) var purchasedProductIdentifiers = Set<String>()
-  private(set) var availableProducts = Set<SKProduct>()
   private var productsRequest: SKProductsRequest?
   private var productsRequestCompletionHandler:  ProductsRequestCompletionHandler?
   
@@ -39,9 +37,6 @@ class IAPHelper: NSObject {
     self.productIndentifiers = prodIds
     super.init()
     SKPaymentQueue.defaultQueue().addTransactionObserver(self)
-    importIAPsFromReceipt()
-    retrieveAvailableProducts()
-    
   }
 }
 
@@ -118,35 +113,11 @@ extension IAPHelper: SKPaymentTransactionObserver {
   
   private func deliverPurchaseNotificatioForIdentifier(identifier: String?) {
     guard let identifier = identifier else { return }
-    purchasedProductIdentifiers.insert(identifier)
     NSNotificationCenter.defaultCenter()
       .postNotificationName(self.dynamicType.IAPHelperPurchaseNotification, object: identifier)
   }
 }
 
-//:- Obtain available products
-extension IAPHelper {
-  private func retrieveAvailableProducts() {
-    requestProducts() {
-      products in
-      guard let products = products else { return }
-      self.availableProducts = Set(products)
-    }
-  }
-}
-
-//:- Importing existing IAPs from receipt
-extension IAPHelper {
-  private func importIAPsFromReceipt() {
-    let verifier = RMStoreAppReceiptVerifier()
-    if verifier.verifyAppReceipt() {
-      let iaps = verifier.appReceipt.inAppPurchases
-      for iap in iaps {
-        deliverPurchaseNotificatioForIdentifier(iap.productIdentifier)
-      }
-    }
-  }
-}
 
 
 protocol IAPContainer {
