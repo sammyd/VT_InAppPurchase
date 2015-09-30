@@ -21,31 +21,30 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="163.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleAspectFit" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9Pd-KT-sl0">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="164"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Fao-Qq-qji">
+                                            <rect key="frame" x="8" y="8" width="551" height="148"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pears_thumb" translatesAutoresizingMaskIntoConstraints="NO" id="w5P-OF-MDw">
-                                                    <rect key="frame" x="0.0" y="32" width="100" height="100"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pears_thumb" translatesAutoresizingMaskIntoConstraints="NO" id="lls-z4-4hc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="148"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="ProductName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vj9-By-NOt">
-                                                    <rect key="frame" x="110" y="64" width="457" height="36"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yg-Mb-hbj">
+                                                    <rect key="frame" x="105" y="0.0" width="446" height="148"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="9Pd-KT-sl0" secondAttribute="bottom" id="UDN-pO-9Cq"/>
-                                        <constraint firstItem="9Pd-KT-sl0" firstAttribute="leading" secondItem="poc-Kl-dC7" secondAttribute="leading" id="brf-bQ-gDQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="9Pd-KT-sl0" secondAttribute="trailing" id="hPC-Dl-h49"/>
-                                        <constraint firstItem="9Pd-KT-sl0" firstAttribute="top" secondItem="poc-Kl-dC7" secondAttribute="top" id="xLn-up-Awb"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Fao-Qq-qji" secondAttribute="bottom" id="77f-5G-JS6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Fao-Qq-qji" secondAttribute="trailing" id="p7x-bV-NGD"/>
+                                        <constraint firstItem="Fao-Qq-qji" firstAttribute="leading" secondItem="poc-Kl-dC7" secondAttribute="leadingMargin" id="vTG-qu-kKz"/>
+                                        <constraint firstItem="Fao-Qq-qji" firstAttribute="top" secondItem="poc-Kl-dC7" secondAttribute="topMargin" id="ygp-O0-dQz"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="nameLabel" destination="Vj9-By-NOt" id="Zhe-P7-tQ1"/>
-                                    <outlet property="productImageView" destination="w5P-OF-MDw" id="tTI-KE-tGP"/>
+                                    <outlet property="nameLabel" destination="3yg-Mb-hbj" id="KEd-eK-qBn"/>
+                                    <outlet property="productImageView" destination="lls-z4-4hc" id="lnm-bw-AMR"/>
                                     <segue destination="UuY-KM-3Oq" kind="show" identifier="DisplayProduct" id="wM3-7q-zuo"/>
                                 </connections>
                             </tableViewCell>
