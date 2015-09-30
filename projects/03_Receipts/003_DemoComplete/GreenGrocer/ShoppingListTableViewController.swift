@@ -79,7 +79,6 @@ class ShoppingListTableViewController: UITableViewController, DataStoreOwner, IA
       destVC.dataStore = dataStore
     } else if let destVC = segue.destinationViewController as? CreateShoppingListViewController {
       destVC.dataStore = dataStore
-      destVC.iapHelper = iapHelper
     }
   }
   

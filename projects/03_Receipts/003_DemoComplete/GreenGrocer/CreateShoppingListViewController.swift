@@ -22,7 +22,7 @@
 
 import UIKit
 
-class CreateShoppingListViewController: UIViewController, DataStoreOwner, IAPContainer {
+class CreateShoppingListViewController: UIViewController, DataStoreOwner {
   
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var datePicker: UIDatePicker!
@@ -36,14 +36,11 @@ class CreateShoppingListViewController: UIViewController, DataStoreOwner, IAPCon
     }
   }
   
-  var iapHelper : IAPHelper?
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
     configureTableView(tableView)
-    checkShoppingListAvailability()
   }
 }
 
@@ -60,8 +57,7 @@ extension CreateShoppingListViewController {
 extension CreateShoppingListViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "completeShoppingListCreation",
-      let shoppingList = createNewShoppingList()
-      where dataStore?.shoppingListCredits > 0 {
+      let shoppingList = createNewShoppingList() {
         dataStore?.addShoppingList(shoppingList)
     }
   }
@@ -110,28 +106,4 @@ extension CreateShoppingListViewController : UITableViewDelegate {
   }
 }
 
-
-extension CreateShoppingListViewController {
-  func checkShoppingListAvailability() {
-    if dataStore?.shoppingListCredits > 0 { return }
-    
-    // Don't have any available. Display the purchase VC
-    guard let storyboard = storyboard else { return }
-    let purchaseVC = storyboard.instantiateViewControllerWithIdentifier("PurchaseShoppingListsVC")
-    if let purchaseVC = purchaseVC as? PurchaseShoppingListCreditsViewController {
-      purchaseVC.iapHelper = iapHelper
-      purchaseVC.dataStore = dataStore
-      purchaseVC.purchaseCompletedOrCancelled = {
-        self.dismissViewControllerAnimated(true) {
-          if self.dataStore?.shoppingListCredits < 1 {
-            self.navigationController?.popViewControllerAnimated(true)
-          }
-        }
-      }
-    }
-
-    presentViewController(purchaseVC, animated: true, completion: nil)
-  }
-  
-}
 

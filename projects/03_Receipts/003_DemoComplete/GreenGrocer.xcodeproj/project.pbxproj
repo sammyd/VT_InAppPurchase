@@ -40,8 +40,6 @@
 		22C5D2AE1BBB053D008A75BE /* libcrypto_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C5D2A81BBB053D008A75BE /* libcrypto_iOS.a */; settings = {ASSET_TAGS = (); }; };
 		22C5D2B01BBB053D008A75BE /* libssl_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C5D2AA1BBB053D008A75BE /* libssl_iOS.a */; settings = {ASSET_TAGS = (); }; };
 		22C5D2B31BBB053D008A75BE /* openssl-build.sh in Resources */ = {isa = PBXBuildFile; fileRef = 22C5D2AD1BBB053D008A75BE /* openssl-build.sh */; settings = {ASSET_TAGS = (); }; };
-		22C5D2B51BBB263A008A75BE /* DataStoreIAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5D2B41BBB263A008A75BE /* DataStoreIAP.swift */; settings = {ASSET_TAGS = (); }; };
-		22C5D2B71BBBCDFC008A75BE /* PurchaseShoppingListCreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5D2B61BBBCDFC008A75BE /* PurchaseShoppingListCreditsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		22E70AB11B68C88300526CD1 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E70AB01B68C88300526CD1 /* StoreViewController.swift */; };
 		22F2E3C31B623DE500E7753F /* CreateShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2E3C21B623DE500E7753F /* CreateShoppingListViewController.swift */; };
 		22F2E3C51B6246BA00E7753F /* SelectableProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2E3C41B6246BA00E7753F /* SelectableProductTableViewCell.swift */; };
@@ -161,8 +159,6 @@
 		22C5D2A81BBB053D008A75BE /* libcrypto_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto_iOS.a; sourceTree = "<group>"; };
 		22C5D2AA1BBB053D008A75BE /* libssl_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl_iOS.a; sourceTree = "<group>"; };
 		22C5D2AD1BBB053D008A75BE /* openssl-build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "openssl-build.sh"; sourceTree = "<group>"; };
-		22C5D2B41BBB263A008A75BE /* DataStoreIAP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreIAP.swift; sourceTree = "<group>"; };
-		22C5D2B61BBBCDFC008A75BE /* PurchaseShoppingListCreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseShoppingListCreditsViewController.swift; sourceTree = "<group>"; };
 		22C5D2BD1BBC32CB008A75BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		22E70AB01B68C88300526CD1 /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		22F2E3C21B623DE500E7753F /* CreateShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateShoppingListViewController.swift; sourceTree = "<group>"; };
@@ -270,7 +266,6 @@
 				2288EB681B6120AD00D4717D /* ShoppingList.swift */,
 				2288EB6A1B612C2400D4717D /* DataStore.swift */,
 				2288EB6E1B614F0E00D4717D /* GreenGrocerSeed.plist */,
-				22C5D2B41BBB263A008A75BE /* DataStoreIAP.swift */,
 			);
 			name = "Data Layer";
 			sourceTree = "<group>";
@@ -413,7 +408,6 @@
 				2288EB631B611C3200D4717D /* ShoppingListTableViewController.swift */,
 				2288EB811B62260E00D4717D /* ShoppingListViewController.swift */,
 				22F2E3C21B623DE500E7753F /* CreateShoppingListViewController.swift */,
-				22C5D2B61BBBCDFC008A75BE /* PurchaseShoppingListCreditsViewController.swift */,
 			);
 			name = ShoppingLists;
 			sourceTree = "<group>";
@@ -553,7 +547,6 @@
 				2288EB7C1B61831D00D4717D /* ProductViewController.swift in Sources */,
 				2288EB671B611FEF00D4717D /* Product.swift in Sources */,
 				222238E61BB83BE00001ED28 /* AdContainerViewController.swift in Sources */,
-				22C5D2B51BBB263A008A75BE /* DataStoreIAP.swift in Sources */,
 				2288EB691B6120AD00D4717D /* ShoppingList.swift in Sources */,
 				2288EB761B61704A00D4717D /* ProductTableViewCell.swift in Sources */,
 				22342C791BBAF92F00C66BAB /* RMAppReceipt.m in Sources */,
@@ -562,7 +555,6 @@
 				2288EB7E1B61887F00D4717D /* MultilineLabelThatWorks.swift in Sources */,
 				2288EB641B611C3200D4717D /* ShoppingListTableViewController.swift in Sources */,
 				222238E81BB89FD70001ED28 /* IAPHelper.swift in Sources */,
-				22C5D2B71BBBCDFC008A75BE /* PurchaseShoppingListCreditsViewController.swift in Sources */,
 				2201AD251B63C3F90055A910 /* AppAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
