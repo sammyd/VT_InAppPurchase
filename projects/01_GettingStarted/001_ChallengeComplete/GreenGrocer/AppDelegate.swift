@@ -44,11 +44,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dso = window?.rootViewController as? DataStoreOwner
     dso?.dataStore = dataStore
     
-    var iapContainer = window?.rootViewController as? IAPContainer
-    iapContainer?.iapHelper = iapHelper
-    
     // Style the app
     applyAppAppearance()
+    
+    // Find the available products
+    iapHelper.requestProducts {
+      products in
+      guard let products = products else { return }
+      print("\n\n\n")
+      print(products.map { $0.productIdentifier })
+    }
     
 
     return true
