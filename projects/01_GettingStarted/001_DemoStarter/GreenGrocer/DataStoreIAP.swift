@@ -22,15 +22,15 @@
 
 import Foundation
 
-private let ShoppingListCountKey = "ShoppingListCount"
+private let ShoppingListCreditCountKey = "ShoppingListCreditCount"
 
 extension DataStore {
-  private(set) var numberAvailableShoppingLists: Int {
+  private(set) var shoppingListCredits: Int {
     get {
-      return readNumberShoppingLists()
+      return readNumberShoppingListCredits()
     }
     set(newValue) {
-      writeNumberShoppingLists(newValue)
+      writeNumberShoppingListCredits(newValue)
     }
   }
   
@@ -48,19 +48,19 @@ extension DataStore {
       numberOfShoppingListsToAdd = 0
     }
     
-    numberAvailableShoppingLists += numberOfShoppingListsToAdd
+    shoppingListCredits += numberOfShoppingListsToAdd
   }
   
-  func useShoppingList() {
-    numberAvailableShoppingLists -= 1
+  func spendShoppingListCredit() {
+    shoppingListCredits -= 1
   }
   
-  private func readNumberShoppingLists() -> Int {
-    return NSUserDefaults.standardUserDefaults().integerForKey(ShoppingListCountKey)
+  private func readNumberShoppingListCredits() -> Int {
+    return NSUserDefaults.standardUserDefaults().integerForKey(ShoppingListCreditCountKey)
   }
   
-  private func writeNumberShoppingLists(number: Int) {
-    NSUserDefaults.standardUserDefaults().setInteger(number, forKey: ShoppingListCountKey)
+  private func writeNumberShoppingListCredits(number: Int) {
+    NSUserDefaults.standardUserDefaults().setInteger(number, forKey: ShoppingListCreditCountKey)
     NSUserDefaults.standardUserDefaults().synchronize()
   }
 }

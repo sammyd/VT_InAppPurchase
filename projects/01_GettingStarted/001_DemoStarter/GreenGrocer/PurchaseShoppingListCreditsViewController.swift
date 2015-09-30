@@ -82,7 +82,7 @@ extension PurchaseShoppingListCreditsViewController {
     
     return helper.availableProducts.filter {
       shoppingListProductIds.contains($0.productIdentifier)
-    }
+      }.sort { $0.0.price.compare($0.1.price) == .OrderedAscending }
   }
   
   private func prepareContent() {

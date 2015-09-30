@@ -112,7 +112,7 @@ extension NSURL {
 extension DataStore {
   func addShoppingList(shoppingList: ShoppingList) {
     shoppingLists.append(shoppingList)
-    useShoppingList()
+    spendShoppingListCredit()
     save()
   }
   

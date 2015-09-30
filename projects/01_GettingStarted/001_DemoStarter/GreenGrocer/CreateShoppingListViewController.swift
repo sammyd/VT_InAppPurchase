@@ -22,7 +22,7 @@
 
 import UIKit
 
-class CreateShoppingListViewController: UIViewController, IAPContainer {
+class CreateShoppingListViewController: UIViewController, DataStoreOwner, IAPContainer {
   
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var datePicker: UIDatePicker!
@@ -61,7 +61,7 @@ extension CreateShoppingListViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "completeShoppingListCreation",
       let shoppingList = createNewShoppingList()
-      where dataStore?.numberAvailableShoppingLists > 0 {
+      where dataStore?.shoppingListCredits > 0 {
         dataStore?.addShoppingList(shoppingList)
     }
   }
@@ -113,7 +113,7 @@ extension CreateShoppingListViewController : UITableViewDelegate {
 
 extension CreateShoppingListViewController {
   func checkShoppingListAvailability() {
-    if dataStore?.numberAvailableShoppingLists > 0 { return }
+    if dataStore?.shoppingListCredits > 0 { return }
     
     // Don't have any available. Display the purchase VC
     guard let storyboard = storyboard else { return }
@@ -123,7 +123,7 @@ extension CreateShoppingListViewController {
       purchaseVC.dataStore = dataStore
       purchaseVC.purchaseCompletedOrCancelled = {
         self.dismissViewControllerAnimated(true) {
-          if self.dataStore?.numberAvailableShoppingLists < 1 {
+          if self.dataStore?.shoppingListCredits < 1 {
             self.navigationController?.popViewControllerAnimated(true)
           }
         }

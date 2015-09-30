@@ -21,7 +21,6 @@
  */
 
 import UIKit
-import CoreSpotlight
 
 class ShoppingListTableViewController: UITableViewController, DataStoreOwner, IAPContainer {
   
