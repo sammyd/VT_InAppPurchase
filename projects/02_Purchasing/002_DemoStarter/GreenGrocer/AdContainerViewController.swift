@@ -38,29 +38,18 @@ class AdContainerViewController: UIViewController, DataStoreOwner, IAPContainer 
       updateIAPHelper()
     }
   }
-  private var adRemovalProduct: SKProduct?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     passDataStoreToChildren()
     passIAPHelperToChildren()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "handlePurchaseNotification:", name: IAPHelper.IAPHelperPurchaseNotification, object: nil)
   }
 }
 
 extension AdContainerViewController {
   
   @IBAction func handleRemoveAdsPressed(sender: AnyObject) {
-    if let adRemovalProduct = adRemovalProduct {
-      iapHelper?.buyProduct(adRemovalProduct)
-    }
-  }
-  
-  func handlePurchaseNotification(notification: NSNotification) {
-    if let productID = notification.object as? String
-      where productID == GreenGrocerPurchase.AdRemoval.productId {
-        setAdsAsRemoved(true)
-    }
+    // TODO: Write implementation
   }
   
   private func setAdsAsRemoved(removed: Bool, animated: Bool = true) {
@@ -80,12 +69,7 @@ extension AdContainerViewController {
     
     guard let iapHelper = iapHelper else { return }
     
-    iapHelper.requestProducts {
-      products in
-      self.adRemovalProduct = products!.filter {
-        $0.productIdentifier == GreenGrocerPurchase.AdRemoval.productId
-      }.first
-    }
+    // TODO: complete this implementation
   }
   
 }

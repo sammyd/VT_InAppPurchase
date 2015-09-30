@@ -25,7 +25,6 @@ import Foundation
 
 
 class IAPHelper: NSObject {
-  static let IAPHelperPurchaseNotification = "IAPHelperPurchaseNotification"
   
   typealias ProductsRequestCompletionHandler = (products: [SKProduct]?) -> ()
   
@@ -36,7 +35,6 @@ class IAPHelper: NSObject {
   init(prodIds: Set<String>) {
     self.productIndentifiers = prodIds
     super.init()
-    SKPaymentQueue.defaultQueue().addTransactionObserver(self)
   }
 }
 
@@ -70,40 +68,6 @@ extension IAPHelper: SKProductsRequestDelegate {
     productsRequestCompletionHandler?(products: .None)
     productsRequestCompletionHandler = .None
     productsRequest = .None
-  }
-}
-
-//:- SKPaymentTransactionObserver
-extension IAPHelper: SKPaymentTransactionObserver {
-  func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-    for transaction in transactions {
-      switch transaction.transactionState {
-      case .Purchased:
-        completeTransaction(transaction)
-      case .Failed:
-        failedTransaction(transaction)
-      default:
-        print("Unhandled transaction type")
-      }
-    }
-  }
-  
-  private func completeTransaction(transaction: SKPaymentTransaction) {
-    deliverPurchaseNotificatioForIdentifier(transaction.payment.productIdentifier)
-    SKPaymentQueue.defaultQueue().finishTransaction(transaction)
-  }
-  
-  private func failedTransaction(transaction: SKPaymentTransaction) {
-    if transaction.error?.code != SKErrorPaymentCancelled {
-      print("Transaction Error: \(transaction.error?.localizedDescription)")
-    }
-    SKPaymentQueue.defaultQueue().finishTransaction(transaction)
-  }
-  
-  private func deliverPurchaseNotificatioForIdentifier(identifier: String?) {
-    guard let identifier = identifier else { return }
-    NSNotificationCenter.defaultCenter()
-      .postNotificationName(self.dynamicType.IAPHelperPurchaseNotification, object: identifier)
   }
 }
 
