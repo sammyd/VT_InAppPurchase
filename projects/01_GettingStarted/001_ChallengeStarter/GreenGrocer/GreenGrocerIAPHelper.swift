@@ -24,9 +24,6 @@ import Foundation
 
 enum GreenGrocerPurchase: String {
   case AdRemoval = "AdRemoval"
-  case NewShoppingLists_One  = "NewShoppingLists_One"
-  case NewShoppingLists_Five = "NewShoppingLists_Five"
-  case NewShoppingLists_Ten  = "NewShoppingLists_Ten"
   
   var productId: String {
     return (NSBundle.mainBundle().bundleIdentifier ?? "") + "." + rawValue

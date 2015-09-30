@@ -28,14 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   var dataStore: DataStore?
-  let iapHelper = IAPHelper(prodIds: Set(
-    [
-      GreenGrocerPurchase.AdRemoval,
-      GreenGrocerPurchase.NewShoppingLists_One,
-      GreenGrocerPurchase.NewShoppingLists_Five,
-      GreenGrocerPurchase.NewShoppingLists_Ten
-    ].map { $0.productId }
-    ))
+  let iapHelper = IAPHelper(prodIds: Set([GreenGrocerPurchase.AdRemoval.productId]))
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
