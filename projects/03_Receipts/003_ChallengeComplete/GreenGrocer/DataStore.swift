@@ -111,9 +111,11 @@ extension NSURL {
 // MARK:- Managing shopping lists
 extension DataStore {
   func addShoppingList(shoppingList: ShoppingList) {
-    shoppingLists.append(shoppingList)
-    spendShoppingListCredit()
-    save()
+    if shoppingListCredits > 0 {
+      shoppingLists.append(shoppingList)
+      spendShoppingListCredit()
+      save()
+    }
   }
   
   func removeShoppingList(shoppingList: ShoppingList) {
