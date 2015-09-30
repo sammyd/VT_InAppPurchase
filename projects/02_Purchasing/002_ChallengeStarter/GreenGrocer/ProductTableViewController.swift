@@ -73,7 +73,7 @@ class ProductTableViewController: UITableViewController, DataStoreOwner, IAPCont
 
 extension ProductTableViewController {
   @IBAction func handleRestorePurchasesPressed(sender: AnyObject) {
-    iapHelper?.restorePurchases()
+    // TODO: Provide an implemention to make payment restoration work
   }
 }
 

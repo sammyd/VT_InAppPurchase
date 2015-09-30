@@ -55,10 +55,6 @@ extension IAPHelper {
     let payment = SKPayment(product: product)
     SKPaymentQueue.defaultQueue().addPayment(payment)
   }
-  
-  func restorePurchases() {
-    SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
-  }
 }
 
 //:- SKProductsRequestDelegate
@@ -86,8 +82,6 @@ extension IAPHelper: SKPaymentTransactionObserver {
         completeTransaction(transaction)
       case .Failed:
         failedTransaction(transaction)
-      case .Restored:
-        restoreTranscation(transaction)
       default:
         print("Unhandled transaction type")
       }
@@ -96,11 +90,6 @@ extension IAPHelper: SKPaymentTransactionObserver {
   
   private func completeTransaction(transaction: SKPaymentTransaction) {
     deliverPurchaseNotificatioForIdentifier(transaction.payment.productIdentifier)
-    SKPaymentQueue.defaultQueue().finishTransaction(transaction)
-  }
-  
-  private func restoreTranscation(transaction: SKPaymentTransaction) {
-    deliverPurchaseNotificatioForIdentifier(transaction.originalTransaction?.payment.productIdentifier)
     SKPaymentQueue.defaultQueue().finishTransaction(transaction)
   }
   
