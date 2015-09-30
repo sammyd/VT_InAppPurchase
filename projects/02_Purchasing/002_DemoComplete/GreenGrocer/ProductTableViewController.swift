@@ -67,14 +67,5 @@ class ProductTableViewController: UITableViewController, DataStoreOwner, IAPCont
       destVC.product = dataStore?.products[selectedRow]
     }
   }
-  
 }
-
-
-extension ProductTableViewController {
-  @IBAction func handleRestorePurchasesPressed(sender: AnyObject) {
-    // TODO: Provide an implemention to make payment restoration work
-  }
-}
-
 
