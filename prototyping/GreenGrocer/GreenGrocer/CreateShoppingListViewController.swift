@@ -114,45 +114,23 @@ extension CreateShoppingListViewController : UITableViewDelegate {
 extension CreateShoppingListViewController {
   func checkShoppingListAvailability() {
     if dataStore?.numberAvailableShoppingLists > 0 { return }
-    guard let iapHelper = iapHelper else { return }
-    // Don't have any available. Show a message
     
-    // Get hold of the ones available to buy
-    let shoppingListProductIds = [
-      GreenGrocerPurchase.NewShoppingLists_One,
-      GreenGrocerPurchase.NewShoppingLists_Five,
-      GreenGrocerPurchase.NewShoppingLists_Ten
-      ].map { $0.productId }
-    
-    let products = iapHelper.availableProducts.filter {
-      shoppingListProductIds.contains($0.productIdentifier)
+    // Don't have any available. Display the purchase VC
+    guard let storyboard = storyboard else { return }
+    let purchaseVC = storyboard.instantiateViewControllerWithIdentifier("PurchaseShoppingListsVC")
+    if let purchaseVC = purchaseVC as? PurchaseShoppingListCreditsViewController {
+      purchaseVC.iapHelper = iapHelper
+      purchaseVC.dataStore = dataStore
+      purchaseVC.purchaseCompletedOrCancelled = {
+        self.dismissViewControllerAnimated(true) {
+          if self.dataStore?.numberAvailableShoppingLists < 1 {
+            self.navigationController?.popViewControllerAnimated(true)
+          }
+        }
+      }
     }
-    
-    let alert = UIAlertController(title: "No Shopping Lists Available",
-      message: "You have run out of shopping lists. To purchase more choose your offer.",
-      preferredStyle: .ActionSheet)
-    
-    let priceFormatter = NSNumberFormatter()
-    priceFormatter.numberStyle = .CurrencyStyle
-    
-    for product in products {
-      priceFormatter.locale = product.priceLocale
-      let title = product.localizedTitle + " " + priceFormatter.stringFromNumber(product.price)!
-      alert.addAction(UIAlertAction(title: title, style: .Default) {
-        _ in
-        iapHelper.buyProduct(product)
-        self.dismissViewControllerAnimated(true, completion: nil)
-      })
-    }
-    
-    alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel) {
-      _ in
-      self.dismissViewControllerAnimated(true, completion: nil)
-    })
-    
-    presentViewController(alert, animated: true, completion: nil)
-    
-    alert.popoverPresentationController?.sourceView = tabBarController?.tabBar
+
+    presentViewController(purchaseVC, animated: true, completion: nil)
   }
   
 }

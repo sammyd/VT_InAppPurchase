@@ -374,6 +374,124 @@
             </objects>
             <point key="canvasLocation" x="1355" y="1109"/>
         </scene>
+        <!--Purchase Shopping List Credits View Controller-->
+        <scene sceneID="cd4-Xi-rrR">
+            <objects>
+                <viewController storyboardIdentifier="PurchaseShoppingListsVC" modalPresentationStyle="pageSheet" id="osq-MV-hJT" customClass="PurchaseShoppingListCreditsViewController" customModule="GreenGrocer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VSz-MP-WRr"/>
+                        <viewControllerLayoutGuide type="bottom" id="Frq-bA-zPA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rzx-xr-igF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ESM-8p-76a">
+                                <rect key="frame" x="30" y="30" width="540" height="245"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase Shopping Lists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZr-EC-NL5">
+                                        <rect key="frame" x="0.0" y="0.0" width="540" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKe-zN-9je" customClass="MultilineLabelThatWorks" customModule="GreenGrocer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="56" width="540" height="64.5"/>
+                                        <string key="text">You don't have any shopping list credits available, so you can't create any more shopping lists at this time. To purchase more credits, choose your offer below.</string>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eSx-eq-MHn">
+                                        <rect key="frame" x="0.0" y="140.5" width="540" height="49.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ioe-Va-kKj">
+                                                <rect key="frame" x="0.0" y="0.0" width="180" height="49.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9IQ-Py-5jI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axY-TF-Ivh">
+                                                        <rect key="frame" x="0.0" y="19.5" width="180" height="30"/>
+                                                        <state key="normal" title="Buy"/>
+                                                        <connections>
+                                                            <action selector="handleBuyPressed:" destination="osq-MV-hJT" eventType="touchUpInside" id="fUD-Hg-Xwb"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KOX-Pk-U6y">
+                                                <rect key="frame" x="180" y="0.0" width="180" height="49.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgR-Pa-0IP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TpA-f2-fCD">
+                                                        <rect key="frame" x="0.0" y="19.5" width="180" height="30"/>
+                                                        <state key="normal" title="Buy"/>
+                                                        <connections>
+                                                            <action selector="handleBuyPressed:" destination="osq-MV-hJT" eventType="touchUpInside" id="dZ0-od-CtJ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k64-l6-pth">
+                                                <rect key="frame" x="360" y="0.0" width="180" height="49.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offer3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk5-ek-2Hh">
+                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frN-wp-Eer">
+                                                        <rect key="frame" x="0.0" y="19.5" width="180" height="30"/>
+                                                        <state key="normal" title="Buy"/>
+                                                        <connections>
+                                                            <action selector="handleBuyPressed:" destination="osq-MV-hJT" eventType="touchUpInside" id="sfe-VL-Uam"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZR-gY-Ecu">
+                                        <rect key="frame" x="0.0" y="210" width="540" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="handleCancelPressed:" destination="osq-MV-hJT" eventType="touchUpInside" id="6kF-Ft-SN5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8825776155307149" green="0.92762328398348104" blue="0.84379835702094153" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ESM-8p-76a" firstAttribute="leading" secondItem="Rzx-xr-igF" secondAttribute="leadingMargin" constant="10" id="dor-Sb-x9S"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ESM-8p-76a" secondAttribute="trailing" constant="10" id="tWN-r3-m1h"/>
+                            <constraint firstItem="ESM-8p-76a" firstAttribute="top" secondItem="VSz-MP-WRr" secondAttribute="bottom" constant="10" id="vll-uV-rSN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outletCollection property="offerLabels" destination="9IQ-Py-5jI" collectionClass="NSMutableArray" id="edA-as-Tug"/>
+                        <outletCollection property="offerLabels" destination="JgR-Pa-0IP" collectionClass="NSMutableArray" id="1k1-j7-ph4"/>
+                        <outletCollection property="offerLabels" destination="gk5-ek-2Hh" collectionClass="NSMutableArray" id="VUq-zW-sBx"/>
+                        <outletCollection property="buyButtons" destination="axY-TF-Ivh" collectionClass="NSMutableArray" id="X1v-se-8wn"/>
+                        <outletCollection property="buyButtons" destination="TpA-f2-fCD" collectionClass="NSMutableArray" id="8TH-X8-cO9"/>
+                        <outletCollection property="buyButtons" destination="frN-wp-Eer" collectionClass="NSMutableArray" id="8it-xC-xr4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HgD-nH-z2S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2078" y="1109"/>
+        </scene>
         <!--Shopping Lists-->
         <scene sceneID="SQL-uI-sdc">
             <objects>
